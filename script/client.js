@@ -1,6 +1,7 @@
 var canvas;
 var canvas_center = new vector(0, 0);
 var mouse_position = new vector(0, 0);
+var camera = new vector(0, 0);
 
 function load_image(path) {
   let image = new Image();
@@ -9,8 +10,8 @@ function load_image(path) {
 }
 
 function global_to_canvas(pos) {
-	let tempx = -player.position.x + pos.x + canvas_center.x;
-	let tempy = -player.position.y + pos.y + canvas_center.y;
+	let tempx = -camera.x + pos.x + canvas_center.x;
+	let tempy = -camera.y + pos.y + canvas_center.y;
 	return new vector(tempx, tempy);
 }
 

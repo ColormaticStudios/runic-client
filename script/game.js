@@ -90,18 +90,6 @@ function key_up(e) {
 	}
 }
 
-function game_tick() {
-	//calculations
-	do_collisions();
-	do_movement();
-
-	//rendering
-	render_background();
-	render_characters();
-	render_nodes();
-	render_usernames();
-}
-
 function init_player() {
 	let player_vector = new vector(0, 0);
 	player = new character(player_vector, 0, 0, username);
@@ -209,13 +197,25 @@ document.onmousemove = function(e) {
 	//position.rot = point_towards([xenter, yenter], e) + rotate_offset;
 	mouse_position.x = e.pageX;
 	mouse_position.y = e.pageY;
-};
+}
+
+function game_tick() {
+	//calculations
+	do_movement();
+	do_collisions();
+	move_camera();
+
+	//rendering
+	render_background();
+	render_characters();
+	render_nodes();
+	render_usernames();
+}
 
 function render_characters() {
 	let ctx = canvas.getContext("2d");
 	characters.forEach(function(itr, idx) {
-		ctx.save();
-		//draw character
+		ctx.save(); 
 		let character_position = global_to_canvas(itr.position);
 		ctx.translate(character_position.x, character_position.y);
 		ctx.rotate(itr.rotation);
@@ -266,12 +266,18 @@ function render_nodes() {
 		let position = global_to_canvas(itr.position);
 		let rotation = itr.rotation;
 		let image = game_data.world.biome.forest[itr.image].img;
+		//let image = game_data.world.biome.forest.tree.img;
 
 		ctx.translate(position.x, position.y);
 		ctx.rotate(rotation);
-		ctx.drawImage(image, image.width/2, image.height/2, dwidth=itr.size, dheight=itr.size);
+		ctx.drawImage(image, -itr.size/2, -itr.size/2, dwidth=itr.size, dheight=itr.size);
 		ctx.restore();
 	});
+}
+
+function move_camera() {
+	camera.x = player.position.x;
+	camera.y = player.position.y;
 }
 
 function open_socket() {
