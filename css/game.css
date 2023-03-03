@@ -1,0 +1,44 @@
+body {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+body:hover {
+   cursor: default;
+}
+canvas.main_canvas {
+	position: absolute;
+}
+.hud {
+   position: absolute;
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+}
+.hud_item {
+   background-color: #555555aa;
+   margin: 8px;
+   padding: 8px 12px;
+   border-radius: 4px;
+   color: white;
+   font-family: roboto, sans-serif;
+}
+div.bar {
+   width: 400px;
+   background-color: grey;
+   border-radius: 3px;
+}
+div.bar div {
+   width: 100%;
+   height: 6px;
+   border-radius: 3px;
+   transition-duration: 0.2s;
+}
+div.red_bar div {
+   background-color: red;
+}
+div.green_bar div {
+   background-color: lime;
+}

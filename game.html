@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/game.css">
+    <title>Runic</title>
+  </head>
+  <body onload="init()">
+    <canvas id="main_canvas" class="main_canvas" width="700" height="700" autofocus></canvas>
+    <div class="hud">
+      <div class="hud_item">
+        <div class="bar red_bar">
+          <div id="health_bar"></div>
+        </div>
+        <br>
+        <div class="bar green_bar">
+          <div id="energy_bar"></div>
+        </div>
+      </div>
+      <div class="hud_item" id="player_username">Runic alpha</div>
+    </div>
+    <script src="script/engine.js"></script>
+    <script src="script/client.js"></script>
+    <script src="script/game.js"></script>
+  </body>
+</html>
