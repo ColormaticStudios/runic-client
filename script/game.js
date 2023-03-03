@@ -171,8 +171,8 @@ function message(type, data) { //incoming message
 	else if (type === "server_data") {
 		if ("fps" in data) {
 			server_fps = data.fps;
-			clearInterval(send_position_to_server);
-			setInterval(send_position_to_server, server_fps);
+			clearInterval(update_server_tick);
+			update_server_tick = setInterval(send_position_to_server, server_fps);
 		}
 	}
 	else {
