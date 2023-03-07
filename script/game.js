@@ -153,7 +153,7 @@ function message(type, data) { //incoming message
 	else if (type === "world") {
 		nodes = new Set();
 		data.forEach(function(itr, idx) {
-			let this_node = new node(new vector(itr.position.x, itr.position.y), itr.rotation, itr.radius, itr.size, itr.image);
+			let this_node = new node(new vector(itr.position.x, itr.position.y), itr.rotation, itr.radius, itr.size, itr.type);
 		});
 	}
 	else if (type === "server_data") {
@@ -265,8 +265,7 @@ function render_nodes() {
 		ctx.save();
 		let position = global_to_canvas(itr.position);
 		let rotation = itr.rotation;
-		let image = game_data.world.biome.forest[itr.image].img;
-		//let image = game_data.world.biome.forest.tree.img;
+		let image = game_data.world.biome.forest[itr.type].img;
 
 		ctx.translate(position.x, position.y);
 		ctx.rotate(rotation);
