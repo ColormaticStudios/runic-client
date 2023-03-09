@@ -59,7 +59,7 @@
      id="layer1">
     <path
        sodipodi:type="star"
-       style="fill:#8b8b91;fill-opacity:1;stroke:#6d6d72;stroke-width:2.59721;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#8b8b91;fill-opacity:1;stroke:#6d6d72;stroke-width:2.64583336;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path12"
        sodipodi:sides="10"
        sodipodi:cx="92.604164"
@@ -88,9 +88,9 @@
        inkscape:flatsided="true"
        inkscape:rounded="0"
        inkscape:randomized="0"
-       inkscape:transform-center-x="1.603063e-06"
+       inkscape:transform-center-x="1.4068344e-06"
        d="m 158.91637,77.606113 -3.84887,41.841707 -27.70774,31.58834 -40.983199,9.26931 -38.604462,-16.59029 -21.480137,-36.11296 3.84887,-41.841712 27.70774,-31.588343 40.983195,-9.269306 38.604463,16.590292 z"
-       transform="matrix(1.0204298,0.33678241,-0.33678241,1.0204298,29.295566,-33.079341)"
-       inkscape:transform-center-y="-3.1093821e-06" />
+       transform="matrix(0.87102117,0.28747162,-0.28747162,0.87102117,38.565043,-14.677095)"
+       inkscape:transform-center-y="-2.8935958e-06" />
   </g>
 </svg>

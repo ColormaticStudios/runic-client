@@ -174,22 +174,26 @@ function do_collisions() {
 	});
 }
 
-function do_movement() {
+function do_movement(delta) {
 	if (keys_pressed["KeyW"]) {
-		player.position.y -= player_speed / fps;
+		player.position.y -= player_speed / delta;
 	}
 	if (keys_pressed["KeyS"]) {
-		player.position.y += player_speed / fps;
+		player.position.y += player_speed / delta;
 	}
 	if (keys_pressed["KeyA"]) {
-		player.position.x -= player_speed / fps;
+		player.position.x -= player_speed / delta;
 	}
 	if (keys_pressed["KeyD"]) {
-		player.position.x += player_speed / fps;
+		player.position.x += player_speed / delta;
 	}
 
 	//rotation
 	player.rotation = canvas_center.rotation_to(mouse_position) + rotation_offset;
+
+	if (mouse_down && !punching) {
+		interact();
+	}
 }
 
 document.onmousemove = function(e) {
@@ -199,9 +203,9 @@ document.onmousemove = function(e) {
 	mouse_position.y = e.pageY;
 }
 
-function game_tick() {
+function game_tick(delta) {
 	//calculations
-	do_movement();
+	do_movement(delta);
 	do_collisions();
 	move_camera();
 
@@ -309,5 +313,38 @@ function send_position_to_server() {
 	if (server.readyState != 1) {
 		clearInterval(update_server_tick);
 		console.log("disconnected from server");
+	}
+}
+
+//interaction
+var interact_interval;
+var punching = false;
+var mouse_down = false;
+document.body.onmousedown = function() { 
+	mouse_down = true;
+}
+document.body.onmouseup = function() {
+	mouse_down = false;
+}
+function interact() {
+	if (!punching) {
+		punching = true;
+		interact_interval = setInterval(interaction_animation, 1000/fps, Date.now());
+	}
+}
+
+function inter_anim_curve(x) {
+	return -15*Math.pow(x-0.25, 2)+1;
+}
+
+function interaction_animation(start_time) {
+	let now = Date.now();
+	let x = (now - start_time)/1000;
+	//console.log(inter_anim_curve(x));
+	rotation_offset = inter_anim_curve(x)/2;
+	if (x >= 0.5) {
+		clearInterval(interact_interval);
+		rotation_offset = 0;
+		punching = false;
 	}
 }

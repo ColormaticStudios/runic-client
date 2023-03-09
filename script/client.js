@@ -2,6 +2,7 @@ var canvas;
 var canvas_center = new vector(0, 0);
 var mouse_position = new vector(0, 0);
 var camera = new vector(0, 0);
+var lastupdate = Date.now();
 
 function load_image(path) {
   let image = new Image();
@@ -63,8 +64,12 @@ function init() {
 }
 
 function tick() {
+    let now = Date.now();
+    let delta = now - lastupdate;
+    lastupdate = now;
+
 	resize_canvas(canvas);
-	game_tick();
+	game_tick(delta);
 }
 
 function game_ready() {
