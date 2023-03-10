@@ -11,7 +11,7 @@ var keys_pressed = {
 }
 var mouse_position = new vector(0, 0);
 var rotation_offset = 0;
-var player_speed = 200;
+var player_speed = 1;
 var update_server_tick;
 
 var username;
@@ -176,16 +176,16 @@ function do_collisions() {
 
 function do_movement(delta) {
 	if (keys_pressed["KeyW"]) {
-		player.position.y -= player_speed / delta;
+		player.position.y -= player_speed * (delta/8);
 	}
 	if (keys_pressed["KeyS"]) {
-		player.position.y += player_speed / delta;
+		player.position.y += player_speed * (delta/8);
 	}
 	if (keys_pressed["KeyA"]) {
-		player.position.x -= player_speed / delta;
+		player.position.x -= player_speed * (delta/8);
 	}
 	if (keys_pressed["KeyD"]) {
-		player.position.x += player_speed / delta;
+		player.position.x += player_speed * (delta/8);
 	}
 
 	//rotation
