@@ -1,21 +1,14 @@
 body {
 	margin: 0;
-	height: 100%;
+	height: 100vh;
 	overflow: hidden;
-	position: relative;
+   position: relative;
 }
 body:hover {
    cursor: default;
 }
 canvas.main_canvas {
 	position: absolute;
-}
-.hud {
-   position: absolute;
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
 }
 .hud_item {
    background-color: #555555aa;
@@ -24,6 +17,15 @@ canvas.main_canvas {
    border-radius: 4px;
    color: white;
    font-family: roboto, sans-serif;
+   width: fit-content;
+   position: absolute;
+   display: inline-block;
+}
+.hud_item.bottom {
+   bottom: 0px;
+}
+.hud_item.right {
+   right: 0px;
 }
 div.bar {
    width: 400px;
