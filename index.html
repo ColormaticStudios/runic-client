@@ -11,9 +11,7 @@
             RUNIC
         </h1>
         <input id="runic_username" class="username" placeholder="Username" maxlength="16"><br>
-        <button class="play" onclick="play()">
-            PLAY
-        </button>
+        <input type="button" class="play" onclick="play()" value="PLAY">
     </div>
     <script>
         var usernameinput = document.getElementById("runic_username");
@@ -26,6 +24,12 @@
                 window.location = "game.html";
             }
         }
+        usernameinput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+            event.preventDefault();
+            play();
+        }
+});
     </script>
 </body>
 </html>

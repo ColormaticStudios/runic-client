@@ -35,7 +35,7 @@ h1.name {
     color: #00ffc6;
 }
 
-button.play {
+input.play {
     font-family: Baloo2, sans-serif;
     font-size: 500%;
     padding: 4px 60px;
@@ -46,7 +46,7 @@ button.play {
     transition-duration: 0.4s;
 }
 
-button.play:hover {
+input.play:hover {
     background-color: #20b13f;
     cursor: pointer;
 }
