@@ -50,3 +50,16 @@ button.play:hover {
     background-color: #20b13f;
     cursor: pointer;
 }
+
+input.username {
+    font-family: Baloo2, sans-serif;
+    font-size: 200%;
+    border: none;
+    padding: 4px 16px;
+    margin: 18px;
+    border-radius: 12px;
+}
+input.username:focus {
+    border: none;
+    outline: none;
+}

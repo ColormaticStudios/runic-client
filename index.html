@@ -10,13 +10,21 @@
         <h1 class="name">
             RUNIC
         </h1>
+        <input id="runic_username" class="username" placeholder="Username" maxlength="16"><br>
         <button class="play" onclick="play()">
             PLAY
         </button>
     </div>
     <script>
+        var usernameinput = document.getElementById("runic_username");
         function play() {
-            window.location = "game.html";
+            var username = usernameinput.value;
+            if (username != "") {
+                window.location = "game.html" + "?name=" + username;
+            }
+            else {
+                window.location = "game.html";
+            }
         }
     </script>
 </body>
