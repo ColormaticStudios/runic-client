@@ -330,6 +330,10 @@ function interact() {
 	if (!punching) {
 		punching = true;
 		interact_interval = setInterval(interaction_animation, 1000/fps, Date.now());
+		server.send(JSON.stringify({
+			"type": "interact",
+			"data": undefined
+		}));
 	}
 }
 
