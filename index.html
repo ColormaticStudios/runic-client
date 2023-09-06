@@ -11,25 +11,34 @@
             RUNIC
         </h1>
         <input id="runic_username" class="username" placeholder="Username" maxlength="16"><br>
+        <input id="runic_server_url" class="username" placeholder="example.com:8080"><br>
         <input type="button" class="play" onclick="play()" value="PLAY">
     </div>
     <script>
         var usernameinput = document.getElementById("runic_username");
+        var urlinput = document.getElementById("runic_server_url");
         function play() {
-            var username = usernameinput.value;
-            if (username != "") {
+            /*if (username != "") {
                 window.location = "game.html" + "?name=" + username;
             }
             else {
                 window.location = "game.html";
+            }*/
+            let parameters = new String();
+            if (usernameinput.value != "") {
+              parameters += "?name=" + usernameinput.value;
             }
+            if (urlinput.value != "") {
+              parameters += "&?server_url=" + urlinput.value;
+            }
+            window.location = "game.html" + parameters;
         }
         usernameinput.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
             event.preventDefault();
             play();
         }
-});
+      });
     </script>
 </body>
 </html>

@@ -18,15 +18,29 @@ var username;
 //set name from URL
 try {
 	let URL = window.location.search;
-	params = new URLSearchParams(URL);
+	let params = new URLSearchParams(URL);
 	username = params.get("name"); //this will get foo from <url>?name=foo
 	if (username === null) {
 		username = "Anonymous";
 	}
 }
 catch(err) {
-	console.error("Failed to get name from url", err);
+	console.error("Failed to get username from URL parameters", err);
 }
+
+var server_url;
+try {
+	let URL = window.location.search;
+	params = new URLSearchParams(URL);
+	server_url = "ws://" + params.get("server_url");
+	if (server_url === "ws://null"/*Javascript why*/) {
+		server_url = "ws://" + "localhost:8080";
+	}
+}
+catch(err) {
+	console.error("Failed to get server from URL parameters", err);
+}
+
 var game_data = {
 	"character": {
 		"variants": [
@@ -219,7 +233,7 @@ function game_tick(delta) {
 function render_characters() {
 	let ctx = canvas.getContext("2d");
 	characters.forEach(function(itr, idx) {
-		ctx.save(); 
+		ctx.save();
 		let character_position = global_to_canvas(itr.position);
 		ctx.translate(character_position.x, character_position.y);
 		ctx.rotate(itr.rotation);
