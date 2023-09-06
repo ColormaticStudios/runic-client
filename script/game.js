@@ -298,7 +298,7 @@ function move_camera() {
 }
 
 function open_socket() {
-	server = new WebSocket("ws://NUC-server-1:8080");
+	server = new WebSocket(server_url);
 	server.onopen = function() {
 	  server.send(JSON.stringify({
 		  "type": "init",
@@ -334,7 +334,7 @@ function send_position_to_server() {
 var interact_interval;
 var punching = false;
 var mouse_down = false;
-document.body.onmousedown = function() { 
+document.body.onmousedown = function() {
 	mouse_down = true;
 }
 document.body.onmouseup = function() {
